@@ -1,4 +1,6 @@
-import colors from 'vuetify/es5/util/colors'
+import { redirect } from '@nuxtjs/auth/lib/module/defaults';
+import colors from 'vuetify/es5/util/colors';
+require("dotenv").config();
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -6,8 +8,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - test-blueprint',
-    title: 'test-blueprint',
+    titleTemplate: '%s - NuxT',
+    title: 'NuxT',
     htmlAttrs: {
       lang: 'en'
     },
@@ -41,14 +43,35 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/auth',
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+  auth: {
+    strategies: {
+      local: {
+        // token: {
+        //   property: 'token',
+        //   global: true,
+        //   // required: true,
+        //   // type: 'Bearer'
+        // },
+        // user: {
+        //   property: 'user'
+        // },
+        endpoints: {
+          login: { url: '/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/me', method: 'get', propertyName: 'user' }
+        },
+        redirect: {
+          login: '/login',
+          logout: '/login',
+          home: '/ ',
+        },
+      }
+    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -68,6 +91,10 @@ export default {
         }
       }
     }
+  },
+
+  axios: {
+    baseURL: process.env.VUE_APP_BACKEND_URL, // Used as fallback if no runtime config is provided
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
