@@ -8,8 +8,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - NuxT',
-    title: 'NuxT',
+    titleTemplate: '%s - test-blueprint',
+    title: 'test-blueprint',
     htmlAttrs: {
       lang: 'en'
     },
@@ -51,15 +51,6 @@ export default {
   auth: {
     strategies: {
       local: {
-        // token: {
-        //   property: 'token',
-        //   global: true,
-        //   // required: true,
-        //   // type: 'Bearer'
-        // },
-        // user: {
-        //   property: 'user'
-        // },
         endpoints: {
           login: { url: '/login', method: 'post', propertyName: 'access_token' },
           logout: { url: '/logout', method: 'post' },
