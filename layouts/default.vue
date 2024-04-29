@@ -72,7 +72,7 @@ export default {
         { icon: 'mdi-apps', title: 'Products', to: '/products' },
         { icon: 'mdi-wrench', title: 'Settings', to: '/settings' },
         { icon: 'mdi-alert-circle', title: 'About Us', to: '/info' },
-        //{ icon: 'mdi-logout', title: 'Log Out', to: '/' },
+        { icon: 'mdi-Home', title: 'Home', to: '/' },
 
       ],
       miniVariant: false,
