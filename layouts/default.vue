@@ -16,9 +16,6 @@
             <v-list-item-title @click="navigateTo(item.route)">{{ item.text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-btn @click="logout">
-      logout
-      </v-btn>
       </v-list>
       <v-list>
         <v-list-item
@@ -43,10 +40,12 @@
   >
   <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
   <v-btn icon @click.stop="miniVariant = !miniVariant">
-    <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
   </v-btn> 
   <v-toolbar-title>{{ title }}</v-toolbar-title>
   <v-spacer />
+  <v-btn @click="logout">
+      logout
+      </v-btn>
 </v-app-bar> 
   
     <v-main>
@@ -69,19 +68,11 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
-        { icon: 'mdi-chart-bubble', title: 'Inspire', to: '/inspire' },
-        { icon: 'mdi-apps', title: 'Products', to: '/products' },
-        { icon: 'mdi-wrench', title: 'Settings', to: '/settings' },
-        { icon: 'mdi-alert-circle', title: 'About Us', to: '/info' },
-        { icon: 'mdi-Home', title: 'Home', to: '/' },
-
-      ],
       miniVariant: false,
       title: 'M-RYE Tech APP',  
       sidebarItems: [
-        { icon: 'mdi-account-circle', text: 'Profile', route: '/profile' },
-        { icon: 'mdi-home', text: 'Home', route: 'http://localhost:3000/dashboard' },
+        { icon: 'mdi-home', text: 'Home', route: '/' },
+        { icon: 'mdi-apps', text: 'Products', route: '/products' },
       ],
     };
   },
