@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Move the button above the table -->
-    <h1 class="mt-16" style="height: 1px;">Products List</h1>
+    <h1 style="height: 1px;">Products List</h1>
     <div class="action-buttons">
       <v-btn color="primary" dark @click="createProduct">Create Product</v-btn>
     </div>
